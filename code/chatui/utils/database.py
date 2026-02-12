@@ -140,7 +140,7 @@ def upload_webpage_url(urls: List[str]):
         uri="/project/data/lancedb",
         table_name="web_collection",
         documents=doc_splits,
-        embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+        embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
     )
     return web_vectorstore
 
@@ -161,7 +161,7 @@ def upload_pdf(pdfs: List[str]):
         uri="/project/data/lancedb",
         table_name="pdf_collection",
         documents=doc_splits,
-        embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+        embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
     )
     return pdf_vectorstore
 
@@ -201,7 +201,7 @@ def upload_video_url(videos: List[str]):
 
     text_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                     table_name="text_img_collection", 
-                                    embedding=NVIDIAEmbeddings(model='NV-Embed-QA'))
+                                    embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'))
     image_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                      table_name="image_collection", 
                                      embedding=NVIDIAEmbeddings(model='nvidia/nvclip'))
@@ -276,7 +276,7 @@ def upload_image(images: List[str]):
     
     text_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                     table_name="text_img_collection", 
-                                    embedding=NVIDIAEmbeddings(model='NV-Embed-QA'))
+                                    embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'))
     image_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                      table_name="image_collection", 
                                      embedding=NVIDIAEmbeddings(model='nvidia/nvclip'))
@@ -322,7 +322,7 @@ def upload_video(videos: List[str]):
     
     text_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                     table_name="text_img_collection", 
-                                    embedding=NVIDIAEmbeddings(model='NV-Embed-QA'))
+                                    embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'))
     image_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                      table_name="image_collection", 
                                      embedding=NVIDIAEmbeddings(model='nvidia/nvclip'))
@@ -345,7 +345,7 @@ def clear():
         vectorstore = LanceDB(
             uri="/project/data/lancedb",
             table_name="web_collection",
-            embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+            embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
         )
         
         vectorstore.delete(delete_all=True)
@@ -354,7 +354,7 @@ def clear():
         vectorstore = LanceDB(
             uri="/project/data/lancedb",
             table_name="pdf_collection",
-            embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+            embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
         )
         
         vectorstore.delete(delete_all=True)
@@ -363,7 +363,7 @@ def clear():
         vectorstore = LanceDB(
             uri="/project/data/lancedb",
             table_name="text_img_collection",
-            embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+            embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
         )
         
         vectorstore.delete(delete_all=True)
@@ -372,7 +372,7 @@ def clear():
         vectorstore = LanceDB(
             uri="/project/data/lancedb",
             table_name="image_collection",
-            embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+            embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
         )
     
         vectorstore.delete(delete_all=True)
@@ -388,7 +388,7 @@ def initialize_img_retriever():
     if os.path.exists('/project/data/mixed_data/') and bool(os.listdir('/project/data/mixed_data/')):
         text_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                         table_name="text_img_collection", 
-                                        embedding=NVIDIAEmbeddings(model='NV-Embed-QA'))
+                                        embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'))
         image_store = LanceDBVectorStore(uri="/project/data/lancedb", 
                                          table_name="image_collection", 
                                          embedding=NVIDIAEmbeddings(model='nvidia/nvclip'))
@@ -421,7 +421,7 @@ def initialize_web_retriever():
         web_vectorstore = LanceDB(
             uri="/project/data/lancedb",
             table_name="web_collection",
-            embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+            embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
         )
 
 def get_webpage_retriever(): 
@@ -436,7 +436,7 @@ def initialize_pdf_retriever():
         pdf_vectorstore = LanceDB(
             uri="/project/data/lancedb",
             table_name="pdf_collection",
-            embedding=NVIDIAEmbeddings(model='NV-Embed-QA'),
+            embedding=NVIDIAEmbeddings(model='nvidia/nv-embedqa-e5-v5'),
         )
 
 def get_pdf_retriever(): 

@@ -1,3 +1,19 @@
+# --- Foundational scientific stack first (prevents metadata-generation failures) ---
+numpy>=1.24,<2.0
+
+# Modern numba with wheels; avoids sdist builds that import numpy during setup
+# (prevents: "ModuleNotFoundError: No module named 'numpy' ... setup.py")
+numba==0.60.0
+
+# --- Fix ONNX build backtracking & "cmake" source-build attempts ---
+# Force a prebuilt ONNX wheel and align protobuf to ONNX's requirement (>=3.20.2, <5)
+onnx==1.16.0
+protobuf>=3.20.3,<5.0.0
+
+# Keep your explicitly pinned ONNX Runtime; 1.18.x pairs fine with the above
+onnxruntime==1.18.0
+
+# --- Your original requirements (kept as-is unless stability required) ---
 jupyterlab>3.0
 llama-index-vector-stores-lancedb==0.2.2
 llama-index-multi-modal-llms-openai==0.2.0
@@ -27,5 +43,4 @@ langchain-nvidia-ai-endpoints==0.2.0
 langchain-openai==0.1.17
 dataclass_wizard==0.22.2
 unstructured[all-docs]
-onnxruntime==1.18.0
 tesseract==0.1.3

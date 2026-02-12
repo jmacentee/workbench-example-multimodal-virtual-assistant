@@ -56,3 +56,4 @@ cover/
 data/scratch/*
 !data/scratch/.gitkeep
 data/lancedb/
+code/output.log
